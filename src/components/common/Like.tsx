@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 
-export default class Like extends Component {
+
+interface LikeProps {
+    like: any,
+    onClick: any
+}
+
+export default class Like extends Component<LikeProps> {
     render() {
         let classes = 'fa fa-heart'
         if (!this.props.like)  classes +='-o';        
