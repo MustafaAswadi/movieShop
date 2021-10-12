@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 
 interface GenreListProps {
@@ -17,10 +17,10 @@ class GenreList extends React.Component<GenreListProps> {
             <ul className="list-group">
                 {item.map((g: any)=>
                     <li 
-                    className={(selectedItem === g)? "list-group-item  active": "list-group-item"} 
-                    onClick={()=>onItemSelect(g)}
-                    key={g[valueProperty]} 
-                    aria-current="true"
+                        className={(selectedItem === g)? "list-group-item  active": "list-group-item"} 
+                        onClick={()=>onItemSelect(g)}
+                        key={g[valueProperty]} 
+                        aria-current="true"
                     >
                         {g[textProperty]}
                     </li>
