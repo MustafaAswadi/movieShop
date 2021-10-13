@@ -11,7 +11,7 @@ import _ from 'lodash';
 class Movies extends Component{
 
     state = {
-        pageSize: 7,
+        pageSize: 5,
         currentPage: 1,
         selectedItem: {_id: '',name: ''},
         movies : [] as any,
