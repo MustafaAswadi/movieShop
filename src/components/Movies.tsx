@@ -5,7 +5,8 @@ import { paginate } from './utils/paginate';
 import { getMovies } from '../services/fakeMovieService'
 import { getGenres } from '../services/fakeGenreService'
 import MovieTable from './moviesTable';
-import _ from 'lodash';
+import _, { min } from 'lodash';
+import { Link } from 'react-router-dom';
 
 
 class Movies extends Component{
@@ -75,11 +76,9 @@ class Movies extends Component{
     render(){
         const { genres, sortColumn} = this.state;
         const { length: count } = this.state.movies;
-
+        
         if(count === 0) return <div className='mt-3'><p>There are no movie in the database</p></div>;
-
         const {totalCount, data: movies} = this.getPageData();       
-
         return (
             <div className="row">
                 <div className="col-sm-2 mt-5">
@@ -92,7 +91,14 @@ class Movies extends Component{
                     />
                 </div>
                 <div className='mt-3 col-sm-10'>
-                    <p>Showing {totalCount} movies in database.</p>
+                    <Link
+                        to="/movies/new"
+                        className='btn btn-primary'
+                        style={{marginBottom:'20px'}}
+                    >
+                       New Movie 
+                    </Link>
+                    <p>Showing <span style={{color: 'white'}} className="badge rounded-pill bg-primary">{totalCount}</span> movies in database.</p>
                     <MovieTable 
                         movies={movies} 
                         onDelete={this.deleteMovie} 
